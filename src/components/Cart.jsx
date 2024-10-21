@@ -146,7 +146,7 @@ const Cart = () => {
       )}
       {/* Back to Dashboard Button */}
       <button
-        className="mt-6 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+        className="mt-6 bg-green-500 rounded-md hover:bg-green-700 text-white py-2 px-4 rounded hover:bg-blue-700"
         onClick={handleBackToDashboard}
       >
         Back to Dashboard

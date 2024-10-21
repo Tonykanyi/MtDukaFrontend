@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import videoFile from '../assets/landing.mp4'; // Adjust the path to your actual video file
-import AdminDashboard from './updated/My-duka-e-commerce/frontend/src/components/AdminDashboard';
 
 const LandingPage = () => {
   return (

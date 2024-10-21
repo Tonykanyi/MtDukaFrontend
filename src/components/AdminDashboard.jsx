@@ -80,7 +80,7 @@ const AdminDashboard = () => {
             Payments
           </button>
         </div>
-        <button className="bg-red-500 text-white py-2 px-4" onClick={handleLogout}>
+        <button className="bg-green-500 hover:bg-green-600 rounded-md text-white py-2 px-4" onClick={handleLogout}>
           Logout
         </button>
       </div>
@@ -166,7 +166,7 @@ const AdminDashboard = () => {
                 className="border p-2 mb-2 w-full"
                 required
               />
-              <button type="submit" className="bg-blue-500 text-white py-2 px-4">Add Product</button>
+              <button type="submit" className="bg-green-400 hover:bg-green-500 rounded-md text-white py-2 px-4">Add Product</button>
             </form>
             <h3 className="text-xl mt-4">Products</h3>
             <table className="min-w-full bg-white border border-gray-300">
