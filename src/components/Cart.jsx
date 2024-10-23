@@ -41,7 +41,7 @@ const Cart = () => {
     const convertedPhone = phone.startsWith('07') ? `254${phone.slice(1)}` : phone;
 
     try {
-      const response = await axios.post('http://localhost:5000/api/mpesa/payment', {
+      const response = await axios.post('https://26da-197-248-16-215.ngrok-free.app/api/mpesa/payment', {
         amount: 1,
         phone: convertedPhone,
       });
