@@ -1,4 +1,3 @@
-// UserDashboard.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // For routing
 import { useCart } from './CartContext'; // Import the cart context
@@ -85,8 +84,8 @@ const UserDashboard = () => {
         </div>
       </header>
 
-         {/* Hero Section */}
-         <section className="hero bg-green-200 py-16">
+      {/* Hero Section */}
+      <section className="hero bg-green-200 py-16">
         <div className="container mx-auto flex justify-between items-center">
           <div className="text">
             <h2 className="text-7xl font-bold text-green-900">Shopping And <br />Department Store.</h2>
@@ -104,90 +103,113 @@ const UserDashboard = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="categories py-12">
-        <div className="container mx-auto">
-          <h3 className="text-3xl font-bold mb-8">Shop Our Top Categories</h3>
-          <div className="grid grid-cols-5 gap-6">
-            <div className="flex flex-col items-center text-center">
-              <img src="https://i.pinimg.com/564x/9e/f6/cc/9ef6ccd89cb74a86f272cf88fd5dd879.jpg" alt="Furniture" className="w-full h-3/4 mb-4" />
-              <p className="text-xl font-semibold">Furniture</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <img src="https://i.pinimg.com/enabled_lo/564x/b4/33/41/b43341110752bf56daf9950daa573fd5.jpg" alt="Hand Bags" className="w-full h-3/4 mb-4" />
-              <p className="text-xl font-semibold">Hand Bags</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <img src="https://i.pinimg.com/enabled_lo/236x/23/0b/c9/230bc904ed0d716d556d2fbe30c532c0.jpg" alt="Shoes" className="w-full h-3/4 mb-4" />
-              <p className="text-xl font-semibold">Shoes</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <img src="https://i.pinimg.com/236x/af/63/ab/af63ab04517da430690489efdfa276bb.jpg" alt="Tech" className="w-full h-3/4 mb-4" />
-              <p className="text-xl font-semibold">Tech</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <img src="https://i.pinimg.com/236x/78/e4/12/78e412069008cfb30982e258d754b70e.jpg" alt="Clothes" className="w-full h-3/4 mb-4" />
-              <p className="text-xl font-semibold">Clothes</p>
-            </div>
-          </div>
-        </div>
-      </section>
+    
+<section className="categories py-12">
+  <div className="container mx-auto">
+    <h3 className="text-3xl font-bold mb-8">Shop Our Top Categories</h3>
+    <div className="grid grid-cols-5 gap-6">
+      <div className="flex flex-col items-center text-center">
+        <Link to="/furniture">
+          <img
+            src="https://i.pinimg.com/564x/9e/f6/cc/9ef6ccd89cb74a86f272cf88fd5dd879.jpg"
+            alt="Furniture"
+            className="w-48 h-48 object-cover mb-4" // Set fixed width and height
+          />
+        </Link>
+        <p className="text-xl font-semibold">Furniture</p>
+      </div>
+      <div className="flex flex-col items-center text-center">
+        <Link to="/handbags">
+          <img
+            src="https://i.pinimg.com/enabled_lo/564x/b4/33/41/b43341110752bf56daf9950daa573fd5.jpg"
+            alt="Hand Bags"
+            className="w-48 h-48 object-cover mb-4" // Set fixed width and height
+          />
+        </Link>
+        <p className="text-xl font-semibold">Hand Bags</p>
+      </div>
+      <div className="flex flex-col items-center text-center">
+        <Link to="/shoes">
+          <img
+            src="https://i.pinimg.com/enabled_lo/236x/23/0b/c9/230bc904ed0d716d556d2fbe30c532c0.jpg"
+            alt="Shoes"
+            className="w-48 h-48 object-cover mb-4" // Set fixed width and height
+          />
+        </Link>
+        <p className="text-xl font-semibold">Shoes</p>
+      </div>
+      <div className="flex flex-col items-center text-center">
+        <Link to="/tech">
+          <img
+            src="https://i.pinimg.com/236x/af/63/ab/af63ab04517da430690489efdfa276bb.jpg"
+            alt="Tech"
+            className="w-48 h-48 object-cover mb-4" // Set fixed width and height
+          />
+        </Link>
+        <p className="text-xl font-semibold">Tech</p>
+      </div>
+      <div className="flex flex-col items-center text-center">
+        <Link to="/clothes">
+          <img
+            src="https://i.pinimg.com/236x/78/e4/12/78e412069008cfb30982e258d754b70e.jpg"
+            alt="Clothes"
+            className="w-48 h-48 object-cover mb-4" // Set fixed width and height
+          />
+        </Link>
+        <p className="text-xl font-semibold">Clothes</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <h3 className= "text-5xl font-bold text-green-900 mt-8 text-center mb-6">TRY OUT NOW!</h3>
 
       {/* Footer */}
       <footer className="bg-green-900 py-6 text-center text-white">
-  <div className="container mx-auto px-4">
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-      <div>
-        <h4 className="font-semibold text-lg mb-2">About Us</h4>
-        <p>
-          My Duka is a platform providing the best shopping experience. We offer
-          a wide range of products and amazing customer service.
-        </p>
-      </div>
-      <div>
-        <h4 className="font-semibold text-lg mb-2">Customer Service</h4>
-        <ul>
-          <li><a href="/shipping" className="hover:underline">Shipping & Delivery</a></li>
-          <li><a href="/returns" className="hover:underline">Returns</a></li>
-          <li><a href="/support" className="hover:underline">Support</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 className= "font-semibold text-lg mb-2">Follow Us</h4>
-        <ul>
-          <li><a href="https://facebook.com" className="hover:underline">Email : myduka@gmail.org</a></li>
-          <li><a href="https://twitter.com" className="hover:underline">Phone Number : 0722758494</a></li>
-          <li><a href="https://instagram.com" className="hover:underline">Location : myduka58</a></li>
-         
-        </ul>
-        
-      </div>
-      <div>
-        <h4 className= 'font-semibold text-lg mb-2 '> Deliveries</h4>
-      <p>CALL US FOR DELIVERY AT A COST DEPENDING ON LOCATION</p>
-     
-      </div>
-    </div>
-    <p className="mb-4">&copy; 2024 My Duka. All rights reserved.</p>
-  </div>
-
-  {/* Google Map */}
-  <div className="w-full h-64 mt-6">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=YOUR_GOOGLE_MAPS_URL_HERE"
-      width="100%"
-      height="100%"
-      style={{ border: 0 }}
-      allowFullScreen=""
-      loading="lazy"
-      title="Google Map"
-    ></iframe>
-  </div>
-</footer>
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div>
+              <h4 className="font-semibold text-lg mb-2">About Us</h4>
+              <p>
+                My Duka is a platform providing the best shopping experience. We offer
+                a wide range of products and amazing customer service.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-2">Customer Service</h4>
+              <ul>
+                <li><a href="/shipping" className="hover:underline">Shipping & Delivery</a></li>
+                <li><a href="/returns" className="hover:underline">Returns</a></li>
+                <li><a href="/support" className="hover:underline">Support</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-2">Follow Us</h4>
+              <ul>
+                <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Facebook</a></li>
+                <li><a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Twitter</a></li>
+                <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-2">Subscribe</h4>
+              <p>Get the latest updates on new products and upcoming sales</p>
+              <form className="mt-4">
+                <input 
+                  type="email" 
+                  placeholder="Your email" 
+                  className="bg-white text-black px-3 py-2 rounded-lg"
+                />
+                <button className="bg-green-500 text-white px-4 py-2 rounded-lg mt-2">Subscribe</button>
+              </form>
+            </div>
+          </div>
+          <p className="text-sm">&copy; 2024 My Duka. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 };
-   
 
 export default UserDashboard;

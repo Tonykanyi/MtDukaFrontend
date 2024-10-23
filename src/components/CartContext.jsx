@@ -1,6 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
 
-
 // Create a context for the cart
 const CartContext = createContext();
 
@@ -22,8 +21,20 @@ export const CartProvider = ({ children }) => {
     setCartCount(prevCount => prevCount + 1); // Increment cart count
   };
 
+  // Function to remove a product from the cart
+  const removeFromCart = (index) => {
+    setCart((prevCart) => prevCart.filter((_, i) => i !== index));
+    setCartCount(prevCount => prevCount - 1); // Decrement cart count
+  };
+
+  // Function to clear the cart
+  const clearCart = () => {
+    setCart([]); // Clear all items in the cart
+    setCartCount(0); // Reset cart count to 0
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, cartCount }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, cartCount }}>
       {children}
     </CartContext.Provider>
   );
