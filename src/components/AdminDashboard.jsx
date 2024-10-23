@@ -20,7 +20,7 @@ const AdminDashboard = () => {
   const handleAddSale = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://my-duka-backend.vercel.app/api/sales', newSale);
+      const response = await axios.post('https://26da-197-248-16-215.ngrok-free.app/api//sales', newSale);
       console.log(response.data);
       setSalesData([...salesData, response.data]); // Use the response to get the correct ID
       setNewSale({ product_id: '', quantity: '' }); // Reset form
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
   const handleAddProduct = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://my-duka-backend.vercel.app/api/products', newProduct);
+      const response = await axios.post('https://26da-197-248-16-215.ngrok-free.app/api//products', newProduct);
       console.log(response.data); // Log the response from the server
       setProductData([...productData, response.data]); // Use the response to get the correct ID
       setNewProduct({ name: '', description: '', price: '', category: '' }); // Reset form
@@ -46,7 +46,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://my-duka-backend.vercel.app/api/products');
+        const response = await axios.get('https://26da-197-248-16-215.ngrok-free.app/api/products');
         setProductData(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
