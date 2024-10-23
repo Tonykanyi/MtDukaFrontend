@@ -98,7 +98,7 @@ const AuthForm = () => {
               onChange={(e) => setRole(e.target.value)}
               className="w-full p-3 mt-2 rounded-lg bg-transparent border border-white/50 focus:border-white/80 text-white placeholder-white/70 focus:outline-none"
             >
-              <option value="user">User</option>
+              <option className='text-black' value="user">User</option>
               <option value="admin">Admin</option>
             </select>
           </div>

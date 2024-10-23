@@ -41,7 +41,7 @@ const Cart = () => {
     const convertedPhone = phone.startsWith('07') ? `254${phone.slice(1)}` : phone;
 
     try {
-      const response = await axios.post('https://26da-197-248-16-215.ngrok-free.app/api/mpesa/payment', {
+      const response = await axios.post('https://e7af-41-90-181-60.ngrok-free.app/api/mpesa/payment', {
         amount: 1,
         phone: convertedPhone,
       });
@@ -125,7 +125,7 @@ const Cart = () => {
                       <input
                         type="text"
                         className="border rounded p-2 w-full"
-                        placeholder="e.g., 0701234567"
+                        placeholder="e.g., 254701234567"
                         value={phoneNumber[index] || ''}
                         onChange={(e) => handlePhoneNumberChange(index, e.target.value)}
                       />
