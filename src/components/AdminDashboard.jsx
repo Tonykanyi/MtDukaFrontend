@@ -9,6 +9,7 @@ const AdminDashboard = () => {
   const [productData, setProductData] = useState([]);
   const [newProduct, setNewProduct] = useState({ name: '', description: '', price: '', category: '' });
   const [paymentsData, setPaymentsData] = useState([]);
+  const [loading, setLoading] = useState(false); // Added this line
 
   const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ const AdminDashboard = () => {
   const handleAddSale = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://26da-197-248-16-215.ngrok-free.app/api//sales', newSale);
+      const response = await axios.post('http://localhost:5000/api/sales', newSale); // Changed to http
       console.log(response.data);
       setSalesData([...salesData, response.data]); // Use the response to get the correct ID
       setNewSale({ product_id: '', quantity: '' }); // Reset form
@@ -28,25 +29,49 @@ const AdminDashboard = () => {
       console.error('Error adding sale:', error);
     }
   };
+  const fetchSales = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/sales'); // Changed to http
+      setSalesData(response.data);
+      
+
+    } catch (error) {
+      console.error('Error fetching sales:', error);
+    }
+  };
 
   // Handle adding a new product
   const handleAddProduct = async (e) => {
     e.preventDefault();
+    
+    if (!newProduct.name || !newProduct.price || isNaN(newProduct.price)) {
+      alert("Please provide a valid product name and price.");
+      return;
+    }
+    
     try {
-      const response = await axios.post('https://26da-197-248-16-215.ngrok-free.app/api//products', newProduct);
-      console.log(response.data); // Log the response from the server
-      setProductData([...productData, response.data]); // Use the response to get the correct ID
-      setNewProduct({ name: '', description: '', price: '', category: '' }); // Reset form
+      setLoading(true); // Set loading state
+      const response = await axios.post('http://localhost:5000/api/products', newProduct); // Changed to http
+      setProductData([...productData, response.data]);
+      setNewProduct({ name: '', description: '', price: '', category: '' });
     } catch (error) {
       console.error('Error adding product:', error);
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
-
+  useEffect(() => {
+    const fetchpayments = async () => {
+      const response = await axios.get('http://localhost:5000/api/mpesa/payment'); // Changed to http
+      setPaymentsData(response.data);
+    }
+    fetchpayments();
+  })
   // Fetch products on mount
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://26da-197-248-16-215.ngrok-free.app/api/products');
+        const response = await axios.get('http://localhost:5000/api/products'); // Changed to http
         setProductData(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -54,6 +79,7 @@ const AdminDashboard = () => {
     };
     fetchProducts();
   }, []);
+
 
   return (
     <div className="flex h-screen">
@@ -119,8 +145,8 @@ const AdminDashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {salesData.map((sale, index) => (
-                  <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}`}>
+                {salesData.map((sale) => (
+                  <tr key={sale.id}>
                     <td className="border border-gray-300 px-4 py-2">{sale.id}</td>
                     <td className="border border-gray-300 px-4 py-2">{sale.product_id}</td>
                     <td className="border border-gray-300 px-4 py-2">{sale.quantity}</td>
@@ -180,7 +206,7 @@ const AdminDashboard = () => {
               </thead>
               <tbody>
                 {productData.map((product) => (
-                  <tr key={product.id} className={`${productData.indexOf(product) % 2 === 0 ? 'bg-gray-100' : 'bg-white'}`}>
+                  <tr key={product.id} className={`${productData.indexOf(product) % 2 === 0 ? 'bg-gray-100' : 'bg-white: bg-green-200'}`}>
                     <td className="border border-gray-300 px-4 py-2">{product.id}</td>
                     <td className="border border-gray-300 px-4 py-2">{product.name}</td>
                     <td className="border border-gray-300 px-4 py-2">{product.price}</td>
@@ -196,6 +222,26 @@ const AdminDashboard = () => {
           <div>
             <h2 className="text-2xl mb-4">Payments</h2>
             {/* Payment form can be added here */}
+            <h3 className="text-xl mt-4">Payments</h3>
+            <table className="min-w-full bg-white border border-gray-300">
+              <thead>
+                <tr className="bg-gray-200">
+                  <th className="border border-gray-300 px-4 py-2">ID</th>
+                  <th className="border border-gray-300 px-4 py-2">Product ID</th>
+                  <th className="border border-gray-300 px-4 py-2">Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {salesData.map((sale) => (
+                  <tr key={sale.id}>
+                    <td className="border border-gray-300 px-4 py-2">{sale.id}</td>
+                    <td className="border border-gray-300 px-4 py-2">{sale.product_id}</td>
+                    <td className="border border-gray-300 px-4 py-2">{sale.quantity}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            
           </div>
         )}
       </div>
