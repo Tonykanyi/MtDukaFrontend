@@ -38,6 +38,7 @@ const AdminDashboard = () => {
     } catch (error) {
       console.error('Error fetching sales:', error);
     }
+    fetchSales();
   };
 
   // Handle adding a new product

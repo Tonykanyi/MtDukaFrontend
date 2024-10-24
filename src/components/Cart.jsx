@@ -47,13 +47,10 @@ const Cart = () => {
       });
 
       if (response.data.success) {
-        alert(`Payment request sent. You will receive a prompt on your phone.`);
       } else {
-        alert(`Payment failed: ${response.data.message}`);
       }
     } catch (error) {
       console.error("Payment Error:", error);
-      alert("Payment failed. Please try again.");
     }
   };
 
