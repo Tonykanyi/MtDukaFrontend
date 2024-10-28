@@ -21,7 +21,7 @@ const AdminDashboard = () => {
   const handleAddSale = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/sales', newSale); // Changed to http
+      const response = await axios.post('https://dukabackend.onrender.com/api/sales', newSale); // Changed to http
       console.log(response.data);
       setSalesData([...salesData, response.data]); // Use the response to get the correct ID
       setNewSale({ product_id: '', quantity: '' }); // Reset form
@@ -31,7 +31,7 @@ const AdminDashboard = () => {
   };
   const fetchSales = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/sales'); // Changed to http
+      const response = await axios.get('https://dukabackend.onrender.com/api/sales'); // Changed to http
       setSalesData(response.data);
       
 
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
     
     try {
       setLoading(true); // Set loading state
-      const response = await axios.post('http://localhost:5000/api/products', newProduct); // Changed to http
+      const response = await axios.post('https://dukabackend.onrender.com/api/products', newProduct); // Changed to http
       setProductData([...productData, response.data]);
       setNewProduct({ name: '', description: '', price: '', category: '' });
     } catch (error) {
@@ -63,7 +63,7 @@ const AdminDashboard = () => {
   };
   useEffect(() => {
     const fetchpayments = async () => {
-      const response = await axios.get('http://localhost:5000/api/mpesa/payment'); // Changed to http
+      const response = await axios.get('https://dukabackend.onrender.com/api/mpesa/payment'); // Changed to http
       setPaymentsData(response.data);
     }
     fetchpayments();
@@ -72,7 +72,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/products'); // Changed to http
+        const response = await axios.get('https://dukabackend.onrender.com/api/products'); // Changed to http
         setProductData(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);

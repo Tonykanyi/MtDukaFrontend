@@ -41,16 +41,19 @@ const Cart = () => {
     const convertedPhone = phone.startsWith('07') ? `254${phone.slice(1)}` : phone;
 
     try {
-      const response = await axios.post('https://e7af-41-90-181-60.ngrok-free.app/api/mpesa/payment', {
+      const response = await axios.post('https://dukabackend.onrender.com/api/mpesa/payment', {
         amount: 1,
         phone: convertedPhone,
       });
 
       if (response.data.success) {
+        alert(response.data.message);
       } else {
+        alert(response.data.message);
       }
     } catch (error) {
       console.error("Payment Error:", error);
+
     }
   };
 
