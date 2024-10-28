@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // For routing
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import { useCart } from './CartContext'; // Import the cart context
 
 const UserDashboard = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const { cartCount } = useCart(); // Access the cart count from context
+  const navigate = useNavigate(); // Create a navigate function
 
   const toggleCategoryDropdown = () => {
     setIsCategoryOpen(!isCategoryOpen);
+  };
+
+  const handleLogout = () => {
+    // Add your logout logic here (e.g., clearing tokens, user data, etc.)
+    navigate('/'); // Redirect to landing page
   };
 
   return (
@@ -68,9 +74,9 @@ const UserDashboard = () => {
               </div>
             )}
           </nav>
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 items-center">
             <div className="relative">
-              <span className= "text-white text-5xl">🛒</span>
+              <span className="text-white text-5xl">🛒</span>
               {cartCount > 0 && (
                 <span className="absolute top-0 right-0 bg-red-500 text-white text-sm rounded-full px-2 py-1">
                   {cartCount}
@@ -79,12 +85,19 @@ const UserDashboard = () => {
             </div>
             <div className="flex items-center space-x-2">
               <Link to="/cart" className="text-white">Cart</Link>
+              {/* Logout Button */}
+              <button 
+                onClick={handleLogout} 
+                className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600"
+              >
+                Logout
+              </button>
             </div>
           </div>
         </div>
       </header>
-
-      {/* Hero Section */}
+      
+      {/* Rest of your component... */}  {/* Hero Section */}
       <section className="hero bg-green-200 py-16">
         <div className="container mx-auto flex justify-between items-center">
           <div className="text">
